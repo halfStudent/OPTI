@@ -1,0 +1,64 @@
+import numpy as np
+ 
+A=[[12,6,7],[4,7,8],[5,8,9]]
+B=[[18,6,7],[4,6,8],[5,3,9]]
+ 
+C=np.dot(A,B)
+ 
+for r in C:
+    print(r)
+
+
+import numpy as np
+from numpy.linalg import eig
+ 
+a=np.array([[0, 2],
+            [2, 3]])
+ 
+w,v=eig(a)
+print('E-value:',w)
+print('E-value:',v)
+
+
+
+
+
+#Inverse Matrix
+inverse = np.linalg.inv(C)
+print("Inverse of matrix C:\n",inverse)
+
+# multiplication of C and C inverse
+np_mult = C@inverse
+print("\nMultiplication of C and C inverse: \n", np_mult)
+
+
+# Transpose of a matrix
+transpose = C.T
+print(transpose)
+
+
+# Find the total of first row
+sum = 0
+for i in A[0]:
+sum = sum + i
+print("Sum of values in first row: ",sum)
+# find total of matrix A
+# sum = 0
+# for i in A[0]:
+# print(i)
+
+
+# numpy array range
+gen = np.arange(8)
+print(gen)
+# -1 means let python calculate
+shape = gen.reshape(2,-1)
+print(shape)
+
+
+Take 3 by 3 matrix and find sum of diagonals only
+r1 = C[0][0]
+r2 = C[1][1]
+r3 = C[2][2]
+print("Sum of diagonal of matrix: ",r1+r2+r3)
+

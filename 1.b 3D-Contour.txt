@@ -1,0 +1,16 @@
+from matplotlib import projections
+import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(-1,1,30)
+y = np.linspace(-1,1,30)
+[X, Y] = np.meshgrid(x,y)
+# Functions
+# Z = X ** 2 + Y ** 2
+Z = np.sin(np.pi * X) * np.sin(np.pi * Y)
+fig = plt.figure()
+ax = plt.axes(projection="3d")
+# For color and diagram effect
+ax.plot_surface(X,Y,Z, cmap="autumn_r", lw = 0.5, rstride = 1, cstride
+= 1, alpha = 0.5)
+ax.contour3D(X,Y,Z, cmap = "binary")
+plt.show

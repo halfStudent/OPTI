@@ -1,0 +1,51 @@
+def f(x):
+    f = (450*x/(8*(x+2) + 10*x +120))**2/x
+    return f
+
+def gold(xlow, xhigh, max, stop):
+    GR = 0.618
+    xL = xlow
+    xH = xhigh
+    d = GR * (xH - xL)
+    x1 = xL + d
+    x2 = xH - d
+
+    f1 = f(x1)
+    f2 = f(x2)
+
+
+    while True:
+        d = GR * d
+
+        if(f1>f2):
+            xH = x1
+            x1 = x2
+            x2 = xH - d
+            f1 = f2
+            f2 = f(x2)
+
+        else:
+            xL = x2
+            x2 = x1
+            x1 = xL + d
+            f2 = f1
+            f1 = f(x1)
+
+        iter = +1
+        if (f1 > f2):
+            xopt = x1
+            fx = f1
+        else:
+            xopt = x2
+            fx = f2
+        if(xopt != 0):
+            ea = (1-GR) * abs((xH-xL)/xopt)*100
+        if(ea<=stop or iter>=max):
+            break
+
+        print("Iter : ", iter)
+        print("xopt : ", xopt)
+        print("f : ", fx)
+        return  xopt
+
+gold(1,100,100,0.001)
